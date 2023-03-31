@@ -33,10 +33,9 @@ function App() {
   }
 
   const updateText = () => {
-    if (process !== 'typing') {
-      setText(texts[Math.floor(Math.random() * 10)].text);
-      setProcess('ready');
-    }
+    setText(texts[Math.floor(Math.random() * 10)].text);
+    setProcess('ready');
+    setMistakes(0);
   }
 
   return (

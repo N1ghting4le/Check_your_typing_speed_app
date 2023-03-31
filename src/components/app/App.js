@@ -23,7 +23,7 @@ function App() {
     if (process === 'loaded') {
       updateText();
     }
-  }, [process])
+  }, [process]);
 
   const getTexts = () => {
     fetch("http://localhost:3001/texts")
@@ -33,8 +33,10 @@ function App() {
   }
 
   const updateText = () => {
-    setText(texts[Math.floor(Math.random() * 10)].text);
-    setProcess('ready');
+    if (process !== 'typing') {
+      setText(texts[Math.floor(Math.random() * 10)].text);
+      setProcess('ready');
+    }
   }
 
   return (
@@ -44,6 +46,7 @@ function App() {
         <div className="left_column">
           <h2>The text you should type</h2>
           <Text text={text} inputedText={inputedText} num={num} process={process}/>
+          <button onClick={updateText}>Change text</button>
           <Textarea 
             setInputedText={setInputedText}
             inputedText={inputedText} 

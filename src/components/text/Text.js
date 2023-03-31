@@ -6,10 +6,15 @@ const Text = ({text, inputedText, num, process}) => {
     const renderText = () => {
         return process !== 'loading' && process !== 'loaded' ? text.split('').map((char, i) => {
             if (itemRefs.current[i]) {
-                if (i === num) {
-                    text[i] === inputedText[i] ? itemRefs.current[i].style = "background-color: green; color: black" : itemRefs.current[i].style = "background-color: red; color: black";
-                } else {
-                    text[i] === inputedText[i] ? itemRefs.current[i].style = "color: grey; background-color: none" : itemRefs.current[i].style = "color: black; background-color: none";
+                if (process === 'typing') {
+                    if (i === num) {
+                        text[i] === inputedText[i] ? itemRefs.current[i].style = "background-color: green; color: black" : itemRefs.current[i].style = "background-color: red; color: black";
+                    } else {
+                        text[i] === inputedText[i] ? itemRefs.current[i].style = "color: grey; background-color: none" : itemRefs.current[i].style = "color: black; background-color: none";
+                    }
+                }
+                else {
+                    itemRefs.current.forEach(item => item ? item.style = "" : null);
                 }
             }
             return <span key={i} ref={el => itemRefs.current[i] = el}>{char}</span>

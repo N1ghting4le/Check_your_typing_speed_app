@@ -10,7 +10,7 @@ const Results = ({process, mistakes, text, time, seconds, inputedText}) => {
             <div className="speed">Speed: <span>{((inputedText.length - 1) / seconds).toFixed(2)} symbols per second</span></div>
             <div className="mistakes">Mistakes: <span>{mistakes}</span></div>
             <div className="accuracy">Accuracy: <span>{checkAccuracy()}%</span></div>
-            <h3>To try again click on input field.<br></br> If you want to try another text,<br></br> reload the page</h3>
+            <h3>To try again click on input field</h3>
         </div>
     ) : 
     (

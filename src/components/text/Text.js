@@ -14,7 +14,7 @@ const Text = ({text, inputedText, num, process}) => {
                     }
                 }
                 else {
-                    itemRefs.current.forEach(item => item ? item.style = "" : null);
+                    itemRefs.current[i].style = "";
                 }
             }
             return <span key={i} ref={el => itemRefs.current[i] = el}>{char}</span>
